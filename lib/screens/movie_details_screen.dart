@@ -14,8 +14,23 @@ class MovieDetailsScreen extends StatefulWidget {
 }
 
 class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
-  List<String> dates = ['12 Fri', '13 Sat', '14 Sun', '15 Mon', '16 Tue', '17 Wed', '18 Thu'];
-  List<String> times = ['09:40 AM', '11:30 AM', '02:15 PM', '05:00 PM', '08:30 PM', '10:00 PM'];
+  List<String> dates = [
+    '12 Fri',
+    '13 Sat',
+    '14 Sun',
+    '15 Mon',
+    '16 Tue',
+    '17 Wed',
+    '18 Thu'
+  ];
+  List<String> times = [
+    '09:40 AM',
+    '11:30 AM',
+    '02:15 PM',
+    '05:00 PM',
+    '08:30 PM',
+    '10:00 PM'
+  ];
   int selectedDateIndex = 0;
   int selectedTimeIndex = 0;
 
@@ -43,7 +58,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
             color: Colors.black.withOpacity(0.5),
           ),
           child: IconButton(
-            icon: const Icon(Icons.arrow_back_ios_rounded, 
+            icon: const Icon(Icons.arrow_back_ios_rounded,
                 color: Colors.white, size: 20),
             onPressed: () => Navigator.pop(context),
           ),
@@ -67,13 +82,14 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
           }
 
           final movie = snapshot.data!;
-          
+
           return CustomScrollView(
             slivers: [
               // Hero Image Section
               SliverAppBar(
                 expandedHeight: 400,
                 backgroundColor: Colors.black,
+                automaticallyImplyLeading: false,
                 flexibleSpace: FlexibleSpaceBar(
                   background: Stack(
                     children: [
@@ -86,7 +102,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                               height: double.infinity,
                             )
                           : Container(color: Colors.grey[900]),
-                      
+
                       // Gradient Overlay
                       Container(
                         decoration: BoxDecoration(
@@ -102,7 +118,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           ),
                         ),
                       ),
-                      
+
                       // Studio Logo and Title
                       Positioned(
                         bottom: 60,
@@ -135,7 +151,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           ],
                         ),
                       ),
-                      
+
                       // Watch Trailer Button
                       Positioned(
                         bottom: 20,
@@ -153,7 +169,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                               ),
                               child: Row(
                                 children: [
-                                  const Icon(Icons.play_arrow_rounded, 
+                                  const Icon(Icons.play_arrow_rounded,
                                       color: Colors.white, size: 20),
                                   const SizedBox(width: 8),
                                   const Text(
@@ -196,7 +212,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                   ),
                 ),
               ),
-              
+
               // Movie Info Section
               SliverToBoxAdapter(
                 child: Padding(
@@ -205,7 +221,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 20),
-                      
+
                       // Cinema Formats
                       Text(
                         'IN DOLBY CINEMA, REALD 3D AND IMAX',
@@ -216,17 +232,17 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           letterSpacing: 1,
                         ),
                       ),
-                      
+
                       const SizedBox(height: 20),
-                      
+
                       // Divider
                       Container(
                         height: 1,
                         color: Colors.white.withOpacity(0.2),
                       ),
-                      
+
                       const SizedBox(height: 20),
-                      
+
                       // Genre Chips
                       Wrap(
                         spacing: 12,
@@ -254,9 +270,9 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           );
                         }).toList(),
                       ),
-                      
+
                       const SizedBox(height: 30),
-                      
+
                       // Movie Title
                       Text(
                         movie.title,
@@ -266,9 +282,9 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           color: Colors.white,
                         ),
                       ),
-                      
+
                       const SizedBox(height: 12),
-                      
+
                       // Movie Details
                       Row(
                         children: [
@@ -300,9 +316,9 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           ),
                         ],
                       ),
-                      
+
                       const SizedBox(height: 20),
-                      
+
                       // Plot Description
                       Text(
                         'After The Devastating Events Of Avengers: Infinity War (2018), The Universe Is In Ruins. With The Help Of Remaining Allies, The Avengers Assemble Once More In Order To Reverse Thanos\' Actions And Restore Balance To The Universe',
@@ -312,9 +328,9 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           height: 1.5,
                         ),
                       ),
-                      
+
                       const SizedBox(height: 30),
-                      
+
                       // Cast Section
                       const Text(
                         'Cast:',
@@ -324,25 +340,29 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           color: Colors.white,
                         ),
                       ),
-                      
+
                       const SizedBox(height: 15),
-                      
+
                       // Cast Members
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          _buildCastMember('Robert Downey Jr.', 'Tony Stark / Iron Man'),
+                          _buildCastMember(
+                              'Robert Downey Jr.', 'Tony Stark / Iron Man'),
                           const SizedBox(height: 12),
-                          _buildCastMember('Scarlett Johansson', 'Natasha Romanoff / Black Widow'),
+                          _buildCastMember('Scarlett Johansson',
+                              'Natasha Romanoff / Black Widow'),
                           const SizedBox(height: 12),
-                          _buildCastMember('Chris Evans', 'Steve Rogers / Captain America'),
+                          _buildCastMember(
+                              'Chris Evans', 'Steve Rogers / Captain America'),
                           const SizedBox(height: 12),
-                          _buildCastMember('Mark Ruffalo', 'Bruce Banner / Hulk'),
+                          _buildCastMember(
+                              'Mark Ruffalo', 'Bruce Banner / Hulk'),
                         ],
                       ),
-                      
+
                       const SizedBox(height: 40),
-                      
+
                       // Date Selection
                       const Text(
                         'Select Date',
@@ -352,9 +372,9 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           color: Colors.white,
                         ),
                       ),
-                      
+
                       const SizedBox(height: 15),
-                      
+
                       SizedBox(
                         height: 50,
                         child: ListView.builder(
@@ -415,9 +435,9 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           },
                         ),
                       ),
-                      
+
                       const SizedBox(height: 30),
-                      
+
                       // Time Selection
                       const Text(
                         'Select Time',
@@ -427,9 +447,9 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           color: Colors.white,
                         ),
                       ),
-                      
+
                       const SizedBox(height: 15),
-                      
+
                       // First row of times
                       SizedBox(
                         height: 50,
@@ -441,9 +461,9 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           },
                         ),
                       ),
-                      
+
                       const SizedBox(height: 12),
-                      
+
                       // Second row of times
                       SizedBox(
                         height: 50,
@@ -456,9 +476,9 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           },
                         ),
                       ),
-                      
+
                       const SizedBox(height: 40),
-                      
+
                       // BOOK NOW Button
                       Container(
                         width: double.infinity,
@@ -495,7 +515,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Icon(Icons.confirmation_num_rounded, 
+                                  Icon(Icons.confirmation_num_rounded,
                                       color: Colors.white, size: 24),
                                   SizedBox(width: 12),
                                   Text(
@@ -513,7 +533,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           ),
                         ),
                       ),
-                      
+
                       const SizedBox(height: 60),
                     ],
                   ),
@@ -599,9 +619,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
-            color: selectedTimeIndex == index
-                ? Colors.white
-                : Colors.white,
+            color: selectedTimeIndex == index ? Colors.white : Colors.white,
           ),
         ),
       ),
